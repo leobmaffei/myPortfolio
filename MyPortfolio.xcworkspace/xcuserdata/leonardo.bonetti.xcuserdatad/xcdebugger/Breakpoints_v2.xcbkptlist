@@ -167,22 +167,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "06F910DF-A875-46D8-8AB4-086C3B776B3D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "UIKit-Content/UIKit-Content/BarCode and QRCode Scanner/CameraScanner.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "scannerSetup()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "50870327-70AB-4F2E-B65A-46C77AC8D260"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -190,8 +174,8 @@
             filePath = "UIKit-Content/UIKit-Content/BarCode and QRCode Scanner/CameraScanner.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "createCaptureSession()"
             landmarkType = "7">
          </BreakpointContent>
@@ -206,9 +190,169 @@
             filePath = "UIKit-Content/UIKit-Content/BarCode and QRCode Scanner/CameraScanner.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "createCaptureSession()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "884060A3-571C-4A6C-8BA2-2E26C5DDD65F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UIKit-Content/UIKit-Content/BarCode and QRCode Scanner/CameraScanner.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "scannerSetup()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "884060A3-571C-4A6C-8BA2-2E26C5DDD65F - 895eedb3adde72df"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UIKit_Content.Scanner.scannerSetup() -&gt; ()"
+                  moduleName = "UIKit-Content"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardo.bonetti/Documents/Study/myPortifolio/UIKit-Content/UIKit-Content/BarCode%20and%20QRCode%20Scanner/CameraScanner.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "884060A3-571C-4A6C-8BA2-2E26C5DDD65F - 8bbb3eb74aab7122"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (UIKit_Content.CameraPermissionAthorization) -&gt; () in UIKit_Content.Scanner.scannerSetup() -&gt; ()"
+                  moduleName = "UIKit-Content"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardo.bonetti/Documents/Study/myPortifolio/UIKit-Content/UIKit-Content/BarCode%20and%20QRCode%20Scanner/CameraScanner.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4AA6D8D2-A804-4251-9E92-27E9C04FFF17"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UIKit-Content/UIKit-Content/BarCode and QRCode Scanner/CameraScanner.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "scannerSetup()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "31556FA4-8400-4FCB-B36F-9196FD597B24"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UIKit-Content/UIKit-Content/BarCode and QRCode Scanner/CameraScanner.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "scannerSetup()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E4599907-1C85-4307-94D9-4B48493EF883"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UIKit-Content/UIKit-Content/BarCode and QRCode Scanner/CameraScanner.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "handleNoCameraDetectedError()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "53381BF8-0D63-47AC-A824-42918A552A5E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UIKit-Content/UIKit-Content/BarCode and QRCode Scanner/CameraScanner.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "handleCameraPermissionError()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A9BC085C-A276-4142-9C94-2E667B87364A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UIKit-Content/UIKit-Content/BarCode and QRCode Scanner/CameraScannerViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "scanCompleted(withError:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AB23063B-287D-4790-8BBB-6870C2856F29"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UIKit-Content/UIKit-Content/BarCode and QRCode Scanner/CameraScanner.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "createCaptureSession()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5BFE4AD0-84F9-483D-ADBE-57A5151A0082"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UIKit-Content/UIKit-Content/BarCode and QRCode Scanner/CameraScanner.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "metadataOutput(_:didOutput:from:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

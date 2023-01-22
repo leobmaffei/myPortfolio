@@ -61,7 +61,12 @@ struct ContentView: View {
                     Text("Copy and Paste").font(Font.system(.body)).bold()
                     CopyPasteView().buttonStyle(.plain)
                 }
-                
+                NavigationLink(destination: BasicLoginScreen()) {
+                    VStack(alignment: .leading) {
+                        Text("Basic Login Screen").font(Font.system(.body)).bold()
+                        Text("Basic login screen with show and hide password button").font(Font.system(.caption))
+                    }
+                }
             }
             .navigationTitle("SwiftUI")
         }

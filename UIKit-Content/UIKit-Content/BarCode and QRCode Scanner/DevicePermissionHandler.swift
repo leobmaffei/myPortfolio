@@ -7,19 +7,18 @@
 
 import AVFoundation
 
-protocol CameraPermissionDelegate {
-    func deniedCameraPermission()
-    func authorized()
+enum CameraPermissionAthorization {
+    case deniedCameraPermission
+    case authorized
 }
 
 class DevicePermissionHandler {
-    var cameraDelegate: CameraPermissionDelegate?
-
     func getCameraUsagePermission() -> AVAuthorizationStatus {
         AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
 
     }
-    func validateCameraPermission() {
+
+    func validateCameraPermission(completion: @escaping (CameraPermissionAthorization) -> Void ) {
         switch getCameraUsagePermission() {
             /*
              Status Restricted -
@@ -29,20 +28,17 @@ class DevicePermissionHandler {
             // Denied access to camera
             // Explain that we need camera access and how to change it.
             // "To enable access, go to Settings > Privacy > Camera and turn on Camera access for this app."
-            cameraDelegate?.deniedCameraPermission()
+            completion(CameraPermissionAthorization.deniedCameraPermission)
         case .notDetermined:
             // The user has not yet been presented with the option to grant access to the camera hardware.
             // Ask for it.
             AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (grantd) in
-            // If access was denied, we do not set the setup error message since access was just denied.
                if grantd {
-               // Allowed access to camera, go ahead and present the UIImagePickerController.
-                   self.cameraDelegate?.authorized()
+                   completion(CameraPermissionAthorization.authorized)
                 }
             })
         case .authorized:
-            // Allowed access to camera, go ahead and present the UIImagePickerController.
-            cameraDelegate?.authorized()
+            completion(CameraPermissionAthorization.authorized)
         @unknown default:
             break; //handle other status
         }

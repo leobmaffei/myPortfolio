@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C417284E2979EFA100F948D5 /* TextFieldExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = C417284D2979EFA100F948D5 /* TextFieldExamples.swift */; };
+		C41C3262297D70D600300E45 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41C3261297D70D600300E45 /* CustomColors.swift */; };
+		C41C3264297D75EA00300E45 /* NeumorphicStyleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41C3263297D75EA00300E45 /* NeumorphicStyleTextField.swift */; };
+		C41C3266297D77EA00300E45 /* OvalStyleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41C3265297D77EA00300E45 /* OvalStyleTextField.swift */; };
+		C41C3268297D7A2000300E45 /* GradientStyleTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41C3267297D7A2000300E45 /* GradientStyleTextfield.swift */; };
+		C41C326A297D7BFD00300E45 /* StrokedStyleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41C3269297D7BFD00300E45 /* StrokedStyleTextField.swift */; };
+		C41C326D297D7DD300300E45 /* TextFieldSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41C326C297D7DD300300E45 /* TextFieldSample.swift */; };
+		C41C326F297D7FED00300E45 /* UnderlinedStyleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41C326E297D7FED00300E45 /* UnderlinedStyleTextField.swift */; };
 		C4465C34292AAAC0009A831E /* Copy-Paste.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4465C33292AAAC0009A831E /* Copy-Paste.swift */; };
 		C4465C37292ABEA8009A831E /* BasicLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4465C36292ABEA8009A831E /* BasicLoginView.swift */; };
 		C470CC782911671A003465EE /* JSONFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C470CC772911671A003465EE /* JSONFormatter.swift */; };
@@ -27,6 +35,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C417284D2979EFA100F948D5 /* TextFieldExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExamples.swift; sourceTree = "<group>"; };
+		C41C3261297D70D600300E45 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
+		C41C3263297D75EA00300E45 /* NeumorphicStyleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicStyleTextField.swift; sourceTree = "<group>"; };
+		C41C3265297D77EA00300E45 /* OvalStyleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvalStyleTextField.swift; sourceTree = "<group>"; };
+		C41C3267297D7A2000300E45 /* GradientStyleTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientStyleTextfield.swift; sourceTree = "<group>"; };
+		C41C3269297D7BFD00300E45 /* StrokedStyleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokedStyleTextField.swift; sourceTree = "<group>"; };
+		C41C326C297D7DD300300E45 /* TextFieldSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldSample.swift; sourceTree = "<group>"; };
+		C41C326E297D7FED00300E45 /* UnderlinedStyleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedStyleTextField.swift; sourceTree = "<group>"; };
 		C4465C33292AAAC0009A831E /* Copy-Paste.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Copy-Paste.swift"; sourceTree = "<group>"; };
 		C4465C36292ABEA8009A831E /* BasicLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicLoginView.swift; sourceTree = "<group>"; };
 		C470CC772911671A003465EE /* JSONFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONFormatter.swift; sourceTree = "<group>"; };
@@ -58,6 +74,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C417284C2979EF6D00F948D5 /* TextField Examples */ = {
+			isa = PBXGroup;
+			children = (
+				C417284D2979EFA100F948D5 /* TextFieldExamples.swift */,
+				C41C326B297D7D1000300E45 /* Views */,
+			);
+			path = "TextField Examples";
+			sourceTree = "<group>";
+		};
+		C41C3260297D70C000300E45 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				C41C3261297D70D600300E45 /* CustomColors.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		C41C326B297D7D1000300E45 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C41C3263297D75EA00300E45 /* NeumorphicStyleTextField.swift */,
+				C41C3265297D77EA00300E45 /* OvalStyleTextField.swift */,
+				C41C3267297D7A2000300E45 /* GradientStyleTextfield.swift */,
+				C41C3269297D7BFD00300E45 /* StrokedStyleTextField.swift */,
+				C41C326C297D7DD300300E45 /* TextFieldSample.swift */,
+				C41C326E297D7FED00300E45 /* UnderlinedStyleTextField.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		C4378D1D29060A1F00C8F9CB /* Pluggy Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,12 +121,12 @@
 			path = "Copy and Paste to Clipboard";
 			sourceTree = "<group>";
 		};
-		C4465C35292ABE85009A831E /* Login Screen */ = {
+		C4465C35292ABE85009A831E /* Basic Login Screen */ = {
 			isa = PBXGroup;
 			children = (
 				C4465C36292ABEA8009A831E /* BasicLoginView.swift */,
 			);
-			path = "Login Screen";
+			path = "Basic Login Screen";
 			sourceTree = "<group>";
 		};
 		C470CC76291166F5003465EE /* Convert Dictionary to JSON */ = {
@@ -110,8 +156,10 @@
 		C471572B28CE5E1E0058351A /* SwiftUI-Content */ = {
 			isa = PBXGroup;
 			children = (
+				C41C3260297D70C000300E45 /* Colors */,
+				C417284C2979EF6D00F948D5 /* TextField Examples */,
 				C4D2CEAF293A71DC00E5D6FA /* TextField Mask */,
-				C4465C35292ABE85009A831E /* Login Screen */,
+				C4465C35292ABE85009A831E /* Basic Login Screen */,
 				C4465C32292AAA90009A831E /* Copy and Paste to Clipboard */,
 				C4D95B63291D8001009B85AC /* Native HTTP Request */,
 				C4CD340829133F2900A721BD /* Webview+JavaScript Injection */,
@@ -259,17 +307,25 @@
 			files = (
 				C4D95B65291D81B8009B85AC /* RequestHTTP.swift in Sources */,
 				C4CD340A29133FAF00A721BD /* HTMLContentViewController+JSInjection.swift in Sources */,
+				C417284E2979EFA100F948D5 /* TextFieldExamples.swift in Sources */,
 				C4D2CEB1293A720C00E5D6FA /* TextFieldMaskView.swift in Sources */,
 				C471572F28CE5E1F0058351A /* ContentView.swift in Sources */,
 				C4D99C37290D74F2009DE4AF /* PluggyAuthenticator.swift in Sources */,
 				C4D95B61291D47EA009B85AC /* PluggySwiftUIWebview.swift in Sources */,
+				C41C3266297D77EA00300E45 /* OvalStyleTextField.swift in Sources */,
+				C41C326F297D7FED00300E45 /* UnderlinedStyleTextField.swift in Sources */,
+				C41C326A297D7BFD00300E45 /* StrokedStyleTextField.swift in Sources */,
 				C480AEB328D24B610040F303 /* HTMLContentViewController.swift in Sources */,
 				C4465C34292AAAC0009A831E /* Copy-Paste.swift in Sources */,
 				C4D95B5F291D45DB009B85AC /* PluggyConnectWebView.swift in Sources */,
+				C41C326D297D7DD300300E45 /* TextFieldSample.swift in Sources */,
+				C41C3262297D70D600300E45 /* CustomColors.swift in Sources */,
 				C470CC782911671A003465EE /* JSONFormatter.swift in Sources */,
 				C471574028CFA8C40058351A /* SwiftUIWebView.swift in Sources */,
 				C471573D28CFA0DB0058351A /* WebContentView.swift in Sources */,
+				C41C3268297D7A2000300E45 /* GradientStyleTextfield.swift in Sources */,
 				C471572D28CE5E1E0058351A /* SwiftUI_ContentApp.swift in Sources */,
+				C41C3264297D75EA00300E45 /* NeumorphicStyleTextField.swift in Sources */,
 				C4465C37292ABEA8009A831E /* BasicLoginView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

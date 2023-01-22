@@ -16,12 +16,8 @@ class CameraScannerViewController: UIViewController, AVCaptureMetadataOutputObje
 
         self.scanner = Scanner(withDelegate: self)
 
-        guard let scanner = self.scanner else {
-            return
-        }
-
-        scanner.requestCaptureSessionStartRunning()
-    }
+        startScanning()
+}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -54,14 +50,23 @@ class CameraScannerViewController: UIViewController, AVCaptureMetadataOutputObje
     }
 
     func scanCompleted(withError error: CameraScannerErrorType) {
-        let alert = Alert()
-            .title(title: "No camera found",
-                   message: "this device dont have camera suport")
-            .withAction(title: "ok",
-                        action: { action in
-                            self.navigationController?.popToRootViewController(animated: true)
-                        })
-            .create()
-        self.present(alert, animated: true)
+        DispatchQueue.main.async {
+            AlertBuilder(viewController: self)
+                .withTitle("No camera found")
+                .andMessage("this device dont have camera suport")
+                .preferredStyle(.alert)
+                .onSuccessAction(title: "OK", { _ in
+                    self.navigationController?.popViewController(animated: true)
+                }).show()
+        }
+    }
+
+    func startScanning() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            guard let scanner = self.scanner else {
+                return
+            }
+            scanner.requestCaptureSessionStartRunning()
+        }
     }
 }

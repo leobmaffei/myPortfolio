@@ -4,29 +4,69 @@
 //
 //  Created by Sumup on 17/01/23.
 //
-
 import UIKit
 
-class Alert {
-    private var alert = UIAlertController()
+struct AlertActionProperties {
+    var title: String?
+    var alertActionStyle: UIAlertAction.Style = .default
+}
 
-    func create() -> UIAlertController {
-        alert
+struct AlertProperties {
+    var title: String?
+    var message: String?
+    var preferredStyle: UIAlertController.Style = .alert
+}
+
+public final class AlertBuilder {
+    private let viewController: UIViewController
+    private var alertProperties = AlertProperties()
+    private var alertActionSuccessProperties = AlertActionProperties()
+    private var alertActionCancelProperties = AlertActionProperties()
+    private var onSuccess: ((UIAlertAction) -> Void)?
+    private var onCancel: ((UIAlertAction) -> Void)?
+
+    init(viewController: UIViewController) {
+        self.viewController = viewController
     }
 
-    func title(title: String,
-               message: String,
-               style: UIAlertController.Style = UIAlertController.Style.alert) -> Alert  {
-        alert = UIAlertController(title: title,
-                          message: message,
-                          preferredStyle: style)
+    public func withTitle(_ title: String) -> AlertBuilder {
+        alertProperties.title = title
         return self
     }
 
-    func withAction(title: String,
-                    style: UIAlertAction.Style = UIAlertAction.Style.default,
-                    action: ((UIAlertAction) -> Void)?) -> Alert {
-        alert.addAction(UIAlertAction(title: title, style: style, handler: action))
+    public func andMessage(_ message: String) -> AlertBuilder {
+        alertProperties.message = message
         return self
     }
+
+    public func preferredStyle(_ style: UIAlertController.Style) -> AlertBuilder {
+        alertProperties.preferredStyle = style
+        return self
+    }
+
+    public func onSuccessAction(title: String, _ onSuccess: @escaping ((UIAlertAction) -> Void)) -> AlertBuilder {
+        alertActionSuccessProperties.title = title
+        self.onSuccess = onSuccess
+        return self
+    }
+
+    public func onCancelAction(title: String, _ onCancel: @escaping ((UIAlertAction) -> Void)) -> AlertBuilder {
+        alertActionCancelProperties.title = title
+        self.onCancel = onCancel
+        return self
+    }
+
+    @discardableResult
+    public func show() -> UIAlertController {
+        let alert = UIAlertController(title: alertProperties.title, message: alertProperties.message, preferredStyle: alertProperties.preferredStyle)
+        if let onSuccess = onSuccess {
+            alert.addAction(.init(title: alertActionSuccessProperties.title, style: alertActionSuccessProperties.alertActionStyle, handler: onSuccess))
+        }
+        if let onCancel = onCancel {
+            alert.addAction(.init(title: alertActionCancelProperties.title, style: .cancel, handler: onCancel))
+        }
+        viewController.present(alert, animated: true, completion: nil)
+        return alert
+    }
+
 }

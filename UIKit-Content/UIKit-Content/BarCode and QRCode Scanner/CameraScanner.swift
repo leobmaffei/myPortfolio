@@ -33,25 +33,31 @@ class Scanner: NSObject {
     init(withDelegate delegate: ScannerDelegate) {
         self.delegate = delegate
         super.init()
-        //devicePermissionHandler.cameraDelegate = self
-        //devicePermissionHandler.validateCameraPermission()
+        scannerSetup()
     }
 
     private func scannerSetup() {
-        guard let captureSession = self.createCaptureSession() else {
-            return
+        devicePermissionHandler.validateCameraPermission { permission in
+            switch permission {
+            case .authorized:
+                guard let captureSession = self.createCaptureSession() else {
+                    return
+                }
+
+                self.captureSession = captureSession
+
+                guard let delegate = self.delegate else {
+                    return
+                }
+
+                let cameraView = delegate.cameraView()
+                let previewLayer = self.createPreviewLayer(withCaptureSession: captureSession,
+                                                           view: cameraView)
+                cameraView.layer.addSublayer(previewLayer)
+            case .deniedCameraPermission:
+                self.handleCameraPermissionError()
+            }
         }
-
-        self.captureSession = captureSession
-
-        guard let delegate = self.delegate else {
-            return
-        }
-
-        let cameraView = delegate.cameraView()
-        let previewLayer = self.createPreviewLayer(withCaptureSession: captureSession,
-                                                   view: cameraView)
-        cameraView.layer.addSublayer(previewLayer)
     }
 
     private func createCaptureSession() -> AVCaptureSession? {
@@ -94,26 +100,17 @@ class Scanner: NSObject {
                                     view: UIView) -> AVCaptureVideoPreviewLayer
     {
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        previewLayer.frame = view.layer.bounds
-        previewLayer.videoGravity = .resizeAspectFill
-
+        DispatchQueue.main.async {
+            previewLayer.frame = view.layer.bounds
+            previewLayer.videoGravity = .resizeAspectFill
+        }
         return previewLayer
+
     }
 
     private func metaObjectTypes() -> [AVMetadataObject.ObjectType]
     {
-        return [.qr,
-                .code128,
-                .code39,
-                .code39Mod43,
-                .code93,
-                .ean13,
-                .ean8,
-                .interleaved2of5,
-                .itf14,
-                .pdf417,
-                .upce
-        ]
+        return [.codabar]
     }
 
     public func metadataOutput(_ output: AVCaptureMetadataOutput,
@@ -160,15 +157,5 @@ class Scanner: NSObject {
 
     private func handleCameraPermissionError() {
         delegate?.scanCompleted(withError: .cameraPermissionNotGranted)
-    }
-}
-
-extension Scanner: CameraPermissionDelegate {
-    func deniedCameraPermission() {
-        handleCameraPermissionError()
-    }
-
-    func authorized() {
-        scannerSetup()
     }
 }
