@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C447C1AE2981BAF500AEB1D8 /* CameraScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C447C1AD2981BAF500AEB1D8 /* CameraScanner.swift */; };
 		C46BF96628CD8FCC0056BE1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46BF96528CD8FCC0056BE1B /* AppDelegate.swift */; };
 		C46BF96828CD8FCC0056BE1B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46BF96728CD8FCC0056BE1B /* SceneDelegate.swift */; };
 		C46BF96F28CD8FCE0056BE1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C46BF96E28CD8FCE0056BE1B /* Assets.xcassets */; };
@@ -14,15 +15,18 @@
 		C46BF97A28CD90B70056BE1B /* ContentSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46BF97928CD90B70056BE1B /* ContentSelectorViewController.swift */; };
 		C46BF97D28CD946B0056BE1B /* WebContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46BF97C28CD946B0056BE1B /* WebContentViewController.swift */; };
 		C46BF97F28CD99CA0056BE1B /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = C46BF97E28CD99CA0056BE1B /* index.html */; };
-		C495484E2977135E00D1648C /* CameraScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C495484D2977135E00D1648C /* CameraScanner.swift */; };
 		C49548502977187000D1648C /* CameraScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C495484F2977187000D1648C /* CameraScannerViewController.swift */; };
 		C4954852297723D200D1648C /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4954851297723D200D1648C /* Alert.swift */; };
 		C49548552977343F00D1648C /* DevicePermissionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49548542977343F00D1648C /* DevicePermissionHandler.swift */; };
 		C4D2CEB4293A748500E5D6FA /* TextfieldFormatterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D2CEB3293A748500E5D6FA /* TextfieldFormatterViewController.swift */; };
 		C4D95B68291E9AF9009B85AC /* PluggyConnectWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D95B67291E9AF9009B85AC /* PluggyConnectWebView.swift */; };
+		C4F9714F299279DD007A880E /* UIView+Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F9714E299279DD007A880E /* UIView+Overlay.swift */; };
+		C4F971522993C056007A880E /* HStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F971512993C056007A880E /* HStack.swift */; };
+		C4F971542993C6A7007A880E /* VStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F971532993C6A7007A880E /* VStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C447C1AD2981BAF500AEB1D8 /* CameraScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraScanner.swift; sourceTree = "<group>"; };
 		C46BF96228CD8FCC0056BE1B /* UIKit-Content.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UIKit-Content.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C46BF96528CD8FCC0056BE1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C46BF96728CD8FCC0056BE1B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,12 +36,14 @@
 		C46BF97928CD90B70056BE1B /* ContentSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSelectorViewController.swift; sourceTree = "<group>"; };
 		C46BF97C28CD946B0056BE1B /* WebContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebContentViewController.swift; sourceTree = "<group>"; };
 		C46BF97E28CD99CA0056BE1B /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		C495484D2977135E00D1648C /* CameraScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraScanner.swift; sourceTree = "<group>"; };
 		C495484F2977187000D1648C /* CameraScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraScannerViewController.swift; sourceTree = "<group>"; };
 		C4954851297723D200D1648C /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		C49548542977343F00D1648C /* DevicePermissionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicePermissionHandler.swift; sourceTree = "<group>"; };
 		C4D2CEB3293A748500E5D6FA /* TextfieldFormatterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldFormatterViewController.swift; sourceTree = "<group>"; };
 		C4D95B67291E9AF9009B85AC /* PluggyConnectWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluggyConnectWebView.swift; sourceTree = "<group>"; };
+		C4F9714E299279DD007A880E /* UIView+Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Overlay.swift"; sourceTree = "<group>"; };
+		C4F971512993C056007A880E /* HStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStack.swift; sourceTree = "<group>"; };
+		C4F971532993C6A7007A880E /* VStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +76,7 @@
 		C46BF96428CD8FCC0056BE1B /* UIKit-Content */ = {
 			isa = PBXGroup;
 			children = (
+				C4F971502993C021007A880E /* StackViews */,
 				C4954853297730FE00D1648C /* Alert Builder */,
 				C495484C2977131800D1648C /* BarCode and QRCode Scanner */,
 				C4D2CEB2293A742D00E5D6FA /* Textfield Formatter */,
@@ -97,9 +104,10 @@
 		C495484C2977131800D1648C /* BarCode and QRCode Scanner */ = {
 			isa = PBXGroup;
 			children = (
-				C495484D2977135E00D1648C /* CameraScanner.swift */,
 				C495484F2977187000D1648C /* CameraScannerViewController.swift */,
 				C49548542977343F00D1648C /* DevicePermissionHandler.swift */,
+				C447C1AD2981BAF500AEB1D8 /* CameraScanner.swift */,
+				C4F9714E299279DD007A880E /* UIView+Overlay.swift */,
 			);
 			path = "BarCode and QRCode Scanner";
 			sourceTree = "<group>";
@@ -126,6 +134,15 @@
 				C4D95B67291E9AF9009B85AC /* PluggyConnectWebView.swift */,
 			);
 			path = "Pluggy Connect Webview";
+			sourceTree = "<group>";
+		};
+		C4F971502993C021007A880E /* StackViews */ = {
+			isa = PBXGroup;
+			children = (
+				C4F971512993C056007A880E /* HStack.swift */,
+				C4F971532993C6A7007A880E /* VStack.swift */,
+			);
+			path = StackViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,10 +220,13 @@
 				C46BF97A28CD90B70056BE1B /* ContentSelectorViewController.swift in Sources */,
 				C4D2CEB4293A748500E5D6FA /* TextfieldFormatterViewController.swift in Sources */,
 				C49548502977187000D1648C /* CameraScannerViewController.swift in Sources */,
-				C495484E2977135E00D1648C /* CameraScanner.swift in Sources */,
+				C447C1AE2981BAF500AEB1D8 /* CameraScanner.swift in Sources */,
 				C4D95B68291E9AF9009B85AC /* PluggyConnectWebView.swift in Sources */,
 				C46BF97D28CD946B0056BE1B /* WebContentViewController.swift in Sources */,
+				C4F9714F299279DD007A880E /* UIView+Overlay.swift in Sources */,
 				C49548552977343F00D1648C /* DevicePermissionHandler.swift in Sources */,
+				C4F971542993C6A7007A880E /* VStack.swift in Sources */,
+				C4F971522993C056007A880E /* HStack.swift in Sources */,
 				C46BF96628CD8FCC0056BE1B /* AppDelegate.swift in Sources */,
 				C46BF96828CD8FCC0056BE1B /* SceneDelegate.swift in Sources */,
 			);

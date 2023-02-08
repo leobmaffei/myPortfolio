@@ -1,161 +1,201 @@
 //
-//  BarCodeScanner.swift
+//  ViewController.swift
 //  UIKit-Content
 //
-//  Created by Leonardo Maffei on 17/01/23.
+//  Created by Leonardo Maffei on 25/01/23.
 //
 
-/// This code is a variant and use Programmingwithswift QRCodeReader as example.
-/// For more information you can acess the original code in this repo: https://github.com/programmingwithswift/QRCodeReader
-///
-/// This Class make it Possible to Read QRCode and Barcode images using the device camera
 import UIKit
+import Vision
 import AVFoundation
+import SafariServices
 
-/// ScannerDelegate: Resposible to handle the callback after a scanner reading
-protocol ScannerDelegate: NSObject {
-    func cameraView() -> UIView
-    func delegateViewController() -> UIViewController
-    func scanCompleted(withCode code: String)
-    func scanCompleted(withError error: CameraScannerErrorType)
+enum CameraScannerError {
+    case barcodeError
+    case cameraUsagerPermissionDenied
+    case noCameraFound
+    case noTorchFound
 }
 
-enum CameraScannerErrorType {
-    case noCameraDetectedOnDevice
-    case cameraPermissionNotGranted
+struct ScannedObject {
+    let payload: String?
+    let confidence: Float
 }
 
-class Scanner: NSObject {
-    public weak var delegate: ScannerDelegate?
-    private var captureSession : AVCaptureSession?
-    private var devicePermissionHandler = DevicePermissionHandler()
+protocol CameraScannerView: NSObject {
+    func scanCompleted(withError error: CameraScannerError)
+    func scanFoundContent(with result: ScannedObject)
+}
 
-    init(withDelegate delegate: ScannerDelegate) {
+class CameraScanner: NSObject {
+    // MARK: - Init Properties
+    private weak var delegate: CameraScannerView?
+    private weak var cameraView: UIView?
+    private let types: [VNBarcodeSymbology]
+    private let videoOrientation: AVCaptureVideoOrientation
+    private let minimumConfidence: VNConfidence
+    private var torchModeOn: Bool
+
+    // MARK: - Internal Use
+    private var captureSession = AVCaptureSession()
+    private let videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back)
+
+    /// Make VNDetectBarcodesRequest variable
+    private lazy var detectBarcodeRequest = VNDetectBarcodesRequest { request, error in
+        guard error == nil else {
+            self.handleError(error: .barcodeError)
+            return
+        }
+        self.processClassification(request)
+    }
+
+    // MARK: - init
+    init(shouldScanTypes types: [VNBarcodeSymbology],
+         delegate: CameraScannerView,
+         cameraView: UIView,
+         videoOrientation: AVCaptureVideoOrientation = .portrait,
+         minimumConfidence: VNConfidence = 0.5,
+         torchModeOn: Bool = false) {
         self.delegate = delegate
+        self.cameraView = cameraView
+        self.types = types
+        self.videoOrientation = videoOrientation
+        self.minimumConfidence = minimumConfidence
+        self.torchModeOn = torchModeOn
+
         super.init()
-        scannerSetup()
+        torchLight(on: torchModeOn)
     }
 
-    private func scannerSetup() {
-        devicePermissionHandler.validateCameraPermission { permission in
-            switch permission {
-            case .authorized:
-                guard let captureSession = self.createCaptureSession() else {
-                    return
-                }
+    public func startScanning() {
+        checkPermissions()
+    }
 
-                self.captureSession = captureSession
+    public func stopScanning() {
+        captureSession.stopRunning()
+    }
 
-                guard let delegate = self.delegate else {
-                    return
-                }
+    public func toggleTorchLight() {
+        torchModeOn.toggle()
+        torchLight(on: torchModeOn)
+    }
 
-                let cameraView = delegate.cameraView()
-                let previewLayer = self.createPreviewLayer(withCaptureSession: captureSession,
-                                                           view: cameraView)
-                cameraView.layer.addSublayer(previewLayer)
-            case .deniedCameraPermission:
-                self.handleCameraPermissionError()
-            }
+    private func torchLight(on: Bool) {
+        guard
+            let device = videoDevice,
+            device.hasTorch else {
+            handleError(error: .noTorchFound)
+            return
         }
-    }
-
-    private func createCaptureSession() -> AVCaptureSession? {
         do {
-            let captureSession = AVCaptureSession()
-            guard let captureDevice = AVCaptureDevice.default(for: .video) else {
-                handleNoCameraDetectedError()
-                return nil
-            }
+            try device.lockForConfiguration()
+            device.torchMode = on ? .on : .off
+            device.unlockForConfiguration()
+        } catch {
+            handleError(error: .noTorchFound)
+        }
+    }
 
-            let deviceInput = try AVCaptureDeviceInput(device: captureDevice)
-            let metaDataOutput = AVCaptureMetadataOutput()
+    private func handleError(error: CameraScannerError) {
+        self.delegate?.scanCompleted(withError: error)
+    }
+}
 
-            // Add device input
-            if captureSession.canAddInput(deviceInput) && captureSession.canAddOutput(metaDataOutput) {
-                captureSession.addInput(deviceInput)
-                captureSession.addOutput(metaDataOutput)
+extension CameraScanner {
+    // MARK: - Camera
+    private func checkPermissions() {
+        /// Cheking for camera usage permission on DevicePremission Handler
+        switch DevicePermissionHandler(delegate: nil).getCameraUsagePermission() {
+        case .authorized:
+            self.setupCameraLiveView()
+        default:
+            self.handleError(error: .cameraUsagerPermissionDenied)
+        }
+    }
 
-                guard let delegate = self.delegate,
-                      let viewController = delegate.delegateViewController() as? AVCaptureMetadataOutputObjectsDelegate else {
-                    return nil
+    private func setupCameraLiveView() {
+        // TODO: Setup captureSession
+        captureSession.sessionPreset = .high
+
+        // TODO: Add input
+        guard
+            let device = videoDevice,
+            let videoDeviceInput = try? AVCaptureDeviceInput(device: device),
+            captureSession.canAddInput(videoDeviceInput) else {
+            handleError(error: .noCameraFound)
+            return
+        }
+
+        captureSession.addInput(videoDeviceInput)
+
+        // TODO: Add output
+        let captureOutput = AVCaptureVideoDataOutput()
+        // TODO: Set video sample rate
+        captureOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_32BGRA)]
+        captureOutput.setSampleBufferDelegate(self, queue: DispatchQueue.global(qos: DispatchQoS.QoSClass.default))
+        captureSession.addOutput(captureOutput)
+
+        configurePreviewLayer()
+
+        // TODO: Run session
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.captureSession.startRunning()
+        }
+    }
+
+    // MARK: - Vision
+    private func processClassification(_ request: VNRequest) {
+        // TODO: Main logic
+        guard let barcodes = request.results else { return }
+        DispatchQueue.main.async { [self] in
+            if captureSession.isRunning {
+                cameraView?.layer.sublayers?.removeSubrange(1...)
+                for barcode in barcodes {
+                    guard
+                        // TODO: Check for Code symbology and confidence score
+                        let potentialCode = barcode as? VNBarcodeObservation,
+                        types.contains(potentialCode.symbology),
+                        potentialCode.confidence > minimumConfidence
+                    else { return }
+                    observationHandler(payload: potentialCode)
                 }
-
-                metaDataOutput.setMetadataObjectsDelegate(viewController,
-                                                          queue: DispatchQueue.main)
-                metaDataOutput.metadataObjectTypes = self.metaObjectTypes()
-
-                return captureSession
             }
         }
-        catch {
-            print("error")
-            // Handle error
-        }
-
-        return nil
     }
 
-    private func createPreviewLayer(withCaptureSession captureSession: AVCaptureSession,
-                                    view: UIView) -> AVCaptureVideoPreviewLayer
-    {
-        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        DispatchQueue.main.async {
-            previewLayer.frame = view.layer.bounds
-            previewLayer.videoGravity = .resizeAspectFill
-        }
-        return previewLayer
-
+    // MARK: - Handler
+    private func observationHandler(payload: VNBarcodeObservation) {
+        delegate?.scanFoundContent(with: ScannedObject(payload: payload.payloadStringValue, confidence: payload.confidence))
     }
+}
 
-    private func metaObjectTypes() -> [AVMetadataObject.ObjectType]
-    {
-        return [.codabar]
-    }
+// MARK: - AVCaptureDelegation
+extension CameraScanner: AVCaptureVideoDataOutputSampleBufferDelegate {
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        // TODO: Live Vision
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
 
-    public func metadataOutput(_ output: AVCaptureMetadataOutput,
-                               didOutput metadataObjects: [AVMetadataObject],
-                               from connection: AVCaptureConnection)
-    {
-        self.requestCaptureSessionStopRunning()
+        let imageRequestHandler = VNImageRequestHandler(
+            cvPixelBuffer: pixelBuffer,
+            orientation: .right)
 
-        guard let metadataObject = metadataObjects.first,
-              let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject,
-              let scannedValue = readableObject.stringValue,
-              let delegate = self.delegate else {
-            return
-        }
-
-        delegate.scanCompleted(withCode: scannedValue)
-    }
-
-    public func requestCaptureSessionStartRunning()
-    {
-        self.toggleCaptureSessionRunningState()
-    }
-
-    public func requestCaptureSessionStopRunning()
-    {
-        self.toggleCaptureSessionRunningState()
-    }
-
-    private func toggleCaptureSessionRunningState() {
-        guard let captureSession = self.captureSession else {
-            return
-        }
-
-        if !captureSession.isRunning {
-            captureSession.startRunning()
-        } else {
-            captureSession.stopRunning()
+        do {
+            try imageRequestHandler.perform([detectBarcodeRequest])
+        } catch {
+            print(error)
         }
     }
+}
 
-    private func handleNoCameraDetectedError() {
-        delegate?.scanCompleted(withError: .noCameraDetectedOnDevice)
-    }
-
-    private func handleCameraPermissionError() {
-        delegate?.scanCompleted(withError: .cameraPermissionNotGranted)
+// MARK: - Helper
+extension CameraScanner {
+    private func configurePreviewLayer() {
+       // DispatchQueue.main.async {
+            let cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession)
+            cameraPreviewLayer.videoGravity = .resizeAspectFill
+            cameraPreviewLayer.connection?.videoOrientation = self.videoOrientation
+            cameraPreviewLayer.frame = self.cameraView?.frame ?? .zero
+            self.cameraView?.layer.insertSublayer(cameraPreviewLayer, at: 0)
+        //}
     }
 }

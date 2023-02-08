@@ -2,7 +2,7 @@
 //  TextFieldExamples.swift
 //  SwiftUI-Content
 //
-//  Created by Sumup on 19/01/23.
+//  Created by Leonardo Maffei on 19/01/23.
 //
 
 import SwiftUI
@@ -15,7 +15,7 @@ struct TextFieldExamples: View {
             OvalStyleTextField()
             GradientStyleTextfield()
             StrokedStyleTextField()
-            UnderliedStyleTextField()
+            UnderlinedStyleTextField()
         }.listStyle(.inset)
     }
 }

@@ -26,6 +26,8 @@
 		C471574028CFA8C40058351A /* SwiftUIWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C471573F28CFA8C40058351A /* SwiftUIWebView.swift */; };
 		C471574228D00D7B0058351A /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = C471574128D00D7B0058351A /* index.html */; };
 		C480AEB328D24B610040F303 /* HTMLContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C480AEB228D24B610040F303 /* HTMLContentViewController.swift */; };
+		C4A6528C2985E2EF00FF9DE9 /* MaterialStyleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A6528B2985E2EF00FF9DE9 /* MaterialStyleTextField.swift */; };
+		C4A6528F29873A2A00FF9DE9 /* AnimatableCustomFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A6528E29873A2A00FF9DE9 /* AnimatableCustomFontModifier.swift */; };
 		C4CD340A29133FAF00A721BD /* HTMLContentViewController+JSInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4CD340929133FAF00A721BD /* HTMLContentViewController+JSInjection.swift */; };
 		C4D2CEB1293A720C00E5D6FA /* TextFieldMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D2CEB0293A720C00E5D6FA /* TextFieldMaskView.swift */; };
 		C4D95B5F291D45DB009B85AC /* PluggyConnectWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D95B5E291D45DB009B85AC /* PluggyConnectWebView.swift */; };
@@ -55,6 +57,8 @@
 		C471573F28CFA8C40058351A /* SwiftUIWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIWebView.swift; sourceTree = "<group>"; };
 		C471574128D00D7B0058351A /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		C480AEB228D24B610040F303 /* HTMLContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLContentViewController.swift; sourceTree = "<group>"; };
+		C4A6528B2985E2EF00FF9DE9 /* MaterialStyleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialStyleTextField.swift; sourceTree = "<group>"; };
+		C4A6528E29873A2A00FF9DE9 /* AnimatableCustomFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableCustomFontModifier.swift; sourceTree = "<group>"; };
 		C4CD340929133FAF00A721BD /* HTMLContentViewController+JSInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTMLContentViewController+JSInjection.swift"; sourceTree = "<group>"; };
 		C4D2CEB0293A720C00E5D6FA /* TextFieldMaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldMaskView.swift; sourceTree = "<group>"; };
 		C4D95B5E291D45DB009B85AC /* PluggyConnectWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluggyConnectWebView.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 				C41C3269297D7BFD00300E45 /* StrokedStyleTextField.swift */,
 				C41C326C297D7DD300300E45 /* TextFieldSample.swift */,
 				C41C326E297D7FED00300E45 /* UnderlinedStyleTextField.swift */,
+				C4A6528B2985E2EF00FF9DE9 /* MaterialStyleTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 		C471572B28CE5E1E0058351A /* SwiftUI-Content */ = {
 			isa = PBXGroup;
 			children = (
+				C4A6528D298739F000FF9DE9 /* AnimatableCustomFontModifier */,
 				C41C3260297D70C000300E45 /* Colors */,
 				C417284C2979EF6D00F948D5 /* TextField Examples */,
 				C4D2CEAF293A71DC00E5D6FA /* TextField Mask */,
@@ -199,6 +205,14 @@
 				C480AEB228D24B610040F303 /* HTMLContentViewController.swift */,
 			);
 			path = "Webview WKWebkit";
+			sourceTree = "<group>";
+		};
+		C4A6528D298739F000FF9DE9 /* AnimatableCustomFontModifier */ = {
+			isa = PBXGroup;
+			children = (
+				C4A6528E29873A2A00FF9DE9 /* AnimatableCustomFontModifier.swift */,
+			);
+			path = AnimatableCustomFontModifier;
 			sourceTree = "<group>";
 		};
 		C4CD340829133F2900A721BD /* Webview+JavaScript Injection */ = {
@@ -311,6 +325,7 @@
 				C4D2CEB1293A720C00E5D6FA /* TextFieldMaskView.swift in Sources */,
 				C471572F28CE5E1F0058351A /* ContentView.swift in Sources */,
 				C4D99C37290D74F2009DE4AF /* PluggyAuthenticator.swift in Sources */,
+				C4A6528C2985E2EF00FF9DE9 /* MaterialStyleTextField.swift in Sources */,
 				C4D95B61291D47EA009B85AC /* PluggySwiftUIWebview.swift in Sources */,
 				C41C3266297D77EA00300E45 /* OvalStyleTextField.swift in Sources */,
 				C41C326F297D7FED00300E45 /* UnderlinedStyleTextField.swift in Sources */,
@@ -324,6 +339,7 @@
 				C471574028CFA8C40058351A /* SwiftUIWebView.swift in Sources */,
 				C471573D28CFA0DB0058351A /* WebContentView.swift in Sources */,
 				C41C3268297D7A2000300E45 /* GradientStyleTextfield.swift in Sources */,
+				C4A6528F29873A2A00FF9DE9 /* AnimatableCustomFontModifier.swift in Sources */,
 				C471572D28CE5E1E0058351A /* SwiftUI_ContentApp.swift in Sources */,
 				C41C3264297D75EA00300E45 /* NeumorphicStyleTextField.swift in Sources */,
 				C4465C37292ABEA8009A831E /* BasicLoginView.swift in Sources */,

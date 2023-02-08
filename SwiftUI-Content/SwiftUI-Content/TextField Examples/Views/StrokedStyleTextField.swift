@@ -2,14 +2,14 @@
 //  StrokedStyleTextField.swift
 //  SwiftUI-Content
 //
-//  Created by Sumup on 22/01/23.
+//  Created by Leonardo Maffei on 22/01/23.
 //
 
 import SwiftUI
 
 ///We can also create a viewModifier to make uor custom textfield.
 ///This also can be used in every view not only in textfields
-struct customViewModifier: ViewModifier {
+struct StrokedStyleView: ViewModifier {
     var roundedCornes: CGFloat
     var startColor: Color
     var endColor: Color
@@ -29,6 +29,11 @@ struct customViewModifier: ViewModifier {
     }
 }
 
+extension View {
+    func strokedStyle(roundedCornes: CGFloat, startColor: Color, endColor: Color, textColor: Color) -> some View {
+        modifier(StrokedStyleView(roundedCornes: roundedCornes, startColor: startColor, endColor: endColor, textColor: textColor))
+    }
+}
 struct StrokedStyleTextField: View {
     @State var text = ""
     var body: some View {
@@ -39,7 +44,7 @@ struct StrokedStyleTextField: View {
             HStack {
                 Image(systemName: "magnifyingglass")
                 TextField("Search...", text: $text)
-            }.modifier(customViewModifier(roundedCornes: 6, startColor: .orange, endColor: .purple, textColor: .white))
+            }.strokedStyle(roundedCornes: 6, startColor: .orange, endColor: .purple, textColor: .white)
         }.padding()
     }
 }

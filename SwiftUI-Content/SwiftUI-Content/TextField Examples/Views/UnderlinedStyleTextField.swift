@@ -2,7 +2,7 @@
 //  UnderliedStyleTextField.swift
 //  SwiftUI-Content
 //
-//  Created by Sumup on 22/01/23.
+//  Created by Leonardo Maffei on 22/01/23.
 //
 
 import SwiftUI
@@ -17,7 +17,7 @@ extension View {
     }
 }
 
-struct UnderliedStyleTextField: View {
+struct UnderlinedStyleTextField: View {
     @State var text = ""
     var body: some View {
         ZStack {
@@ -35,6 +35,6 @@ struct UnderliedStyleTextField: View {
 
 struct UnderliedStyleTextField_Previews: PreviewProvider {
     static var previews: some View {
-        UnderliedStyleTextField()
+        UnderlinedStyleTextField()
     }
 }

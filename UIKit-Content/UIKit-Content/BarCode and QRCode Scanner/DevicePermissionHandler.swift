@@ -2,7 +2,7 @@
 //  DevicePermissionHandler.swift
 //  UIKit-Content
 //
-//  Created by Sumup on 17/01/23.
+//  Created by Leonardo Maffei on 17/01/23.
 //
 
 import AVFoundation
@@ -12,13 +12,23 @@ enum CameraPermissionAthorization {
     case authorized
 }
 
+protocol DevicePermissionProtocol: NSObject {
+    func videoPermission(permission: CameraPermissionAthorization)
+}
+
 class DevicePermissionHandler {
+    private weak var delegate: DevicePermissionProtocol?
+
+    init(delegate: DevicePermissionProtocol?) {
+        self.delegate = delegate
+    }
+
     func getCameraUsagePermission() -> AVAuthorizationStatus {
-        AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        AVCaptureDevice.authorizationStatus(for: .video)
 
     }
 
-    func validateCameraPermission(completion: @escaping (CameraPermissionAthorization) -> Void ) {
+    func validateCameraPermission() {
         switch getCameraUsagePermission() {
             /*
              Status Restricted -
@@ -28,17 +38,19 @@ class DevicePermissionHandler {
             // Denied access to camera
             // Explain that we need camera access and how to change it.
             // "To enable access, go to Settings > Privacy > Camera and turn on Camera access for this app."
-            completion(CameraPermissionAthorization.deniedCameraPermission)
+            delegate?.videoPermission(permission: .deniedCameraPermission)
         case .notDetermined:
             // The user has not yet been presented with the option to grant access to the camera hardware.
             // Ask for it.
-            AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { (grantd) in
+            AVCaptureDevice.requestAccess(for: .video) { [self] grantd in
                if grantd {
-                   completion(CameraPermissionAthorization.authorized)
-                }
-            })
+                   delegate?.videoPermission(permission: .authorized)
+               } else {
+                   delegate?.videoPermission(permission: .deniedCameraPermission)
+               }
+            }
         case .authorized:
-            completion(CameraPermissionAthorization.authorized)
+            delegate?.videoPermission(permission: .authorized)
         @unknown default:
             break; //handle other status
         }

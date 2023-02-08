@@ -2,7 +2,7 @@
 //  ContentSelectorViewController.swift
 //  UIKit-Content
 //
-//  Created by Sumup on 11/09/22.
+//  Created by Leonardo Maffei on 11/09/22.
 //
 
 import Foundation
@@ -55,7 +55,7 @@ class ContentSelectorViewController: UITableViewController {
             navigationController?.pushViewController(view, animated: true)
         } else if indexPath.row == 3 {
             let view = CameraScannerViewController()
-            navigationController?.pushViewController(view, animated: true)
+            self.navigationController?.pushViewController(view, animated: true)
         }
     }
 }
